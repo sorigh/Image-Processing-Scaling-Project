@@ -1,0 +1,126 @@
+
+=== Testing on: shell | Scale: 2 x 2 ===
+Algoritm: Nearest | Time: 4 ms | PSNR: inf | SSIM: 1.000000 | RMSE: 0.000000
+Algoritm: Bilinear | Time: 15 ms | PSNR: 27.423871 | SSIM: 0.949853 | RMSE: 10.847924
+Algoritm: Bicubic (a=-0.5) | Time: 135 ms | PSNR: 27.485836 | SSIM: 0.952599 | RMSE: 10.770810
+Algoritm: Bicubic (a=-0.7) | Time: 130 ms | PSNR: 27.392233 | SSIM: 0.952638 | RMSE: 10.887509
+Algoritm: Bicubic (a=-1.0) | Time: 117 ms | PSNR: 27.209252 | SSIM: 0.951623 | RMSE: 11.119303
+Algoritm: Lanczos (a=2) | Time: 290 ms | PSNR: 27.485975 | SSIM: 0.952620 | RMSE: 10.770638
+Algoritm: Lanczos (a=3) | Time: 525 ms | PSNR: 27.266881 | SSIM: 0.951475 | RMSE: 11.045773
+Algoritm: Lanczos (a=4) | Time: 868 ms | PSNR: 27.155985 | SSIM: 0.950219 | RMSE: 11.187703
+Algoritm: OpenCV Nearest | Time: 9 ms | PSNR: inf | SSIM: 1.000000 | RMSE: 0.000000
+Algoritm: OpenCV Bilinear | Time: 1 ms | PSNR: 29.306490 | SSIM: 0.964680 | RMSE: 8.734050
+Algoritm: OpenCV Bicubic | Time: 0 ms | PSNR: 35.162798 | SSIM: 0.991500 | RMSE: 4.450413
+Algoritm: OpenCV Lanczos | Time: 1 ms | PSNR: 36.210860 | SSIM: 0.993356 | RMSE: 3.944547
+
+=== Testing on: shell | Scale: 0.5 x 0.5 ===
+Algoritm: Nearest | Time: 0 ms | PSNR: 20.558402 | SSIM: 0.744505 | RMSE: 23.912231
+Algoritm: Bilinear | Time: 1 ms | PSNR: 20.558402 | SSIM: 0.744505 | RMSE: 23.912231
+Algoritm: Bicubic (a=-0.5) | Time: 6 ms | PSNR: 20.558402 | SSIM: 0.744505 | RMSE: 23.912231
+Algoritm: Bicubic (a=-0.7) | Time: 5 ms | PSNR: 20.558402 | SSIM: 0.744505 | RMSE: 23.912231
+Algoritm: Bicubic (a=-1.0) | Time: 6 ms | PSNR: 20.558402 | SSIM: 0.744505 | RMSE: 23.912231
+Algoritm: Lanczos (a=2) | Time: 13 ms | PSNR: 20.558402 | SSIM: 0.744505 | RMSE: 23.912231
+Algoritm: Lanczos (a=3) | Time: 31 ms | PSNR: 20.558402 | SSIM: 0.744505 | RMSE: 23.912231
+Algoritm: Lanczos (a=4) | Time: 60 ms | PSNR: 20.558402 | SSIM: 0.744505 | RMSE: 23.912231
+Algoritm: OpenCV Nearest | Time: 0 ms | PSNR: 20.558402 | SSIM: 0.744505 | RMSE: 23.912231
+Algoritm: OpenCV Bilinear | Time: 0 ms | PSNR: 22.193943 | SSIM: 0.789952 | RMSE: 19.808110
+Algoritm: OpenCV Bicubic | Time: 0 ms | PSNR: 22.572100 | SSIM: 0.816066 | RMSE: 18.964228
+Algoritm: OpenCV Lanczos | Time: 0 ms | PSNR: 22.249539 | SSIM: 0.805354 | RMSE: 19.681727
+
+=== Testing on: shell | Scale: 1.5 x 0.75 ===
+Algoritm: Nearest | Time: 0 ms | PSNR: 23.933108 | SSIM: 0.887993 | RMSE: 16.213799
+Algoritm: Bilinear | Time: 4 ms | PSNR: 25.992592 | SSIM: 0.922306 | RMSE: 12.791179
+Algoritm: Bicubic (a=-0.5) | Time: 53 ms | PSNR: 26.775758 | SSIM: 0.937116 | RMSE: 11.688326
+Algoritm: Bicubic (a=-0.7) | Time: 54 ms | PSNR: 26.927674 | SSIM: 0.940196 | RMSE: 11.485674
+Algoritm: Bicubic (a=-1.0) | Time: 56 ms | PSNR: 27.003106 | SSIM: 0.942292 | RMSE: 11.386359
+Algoritm: Lanczos (a=2) | Time: 134 ms | PSNR: 26.771426 | SSIM: 0.937076 | RMSE: 11.694156
+Algoritm: Lanczos (a=3) | Time: 212 ms | PSNR: 27.029113 | SSIM: 0.941772 | RMSE: 11.352318
+Algoritm: Lanczos (a=4) | Time: 258 ms | PSNR: 27.024350 | SSIM: 0.941677 | RMSE: 11.358544
+Algoritm: OpenCV Nearest | Time: 0 ms | PSNR: 23.933108 | SSIM: 0.887993 | RMSE: 16.213799
+Algoritm: OpenCV Bilinear | Time: 0 ms | PSNR: 26.752769 | SSIM: 0.932141 | RMSE: 11.719302
+Algoritm: OpenCV Bicubic | Time: 0 ms | PSNR: 28.558919 | SSIM: 0.956897 | RMSE: 9.519064
+Algoritm: OpenCV Lanczos | Time: 0 ms | PSNR: 28.828836 | SSIM: 0.959503 | RMSE: 9.227805
+
+=== Testing on: binaryflower | Scale: 2 x 2 ===
+Algoritm: Nearest | Time: 72 ms | PSNR: inf | SSIM: 1.000000 | RMSE: 0.000000
+Algoritm: Bilinear | Time: 389 ms | PSNR: 25.722619 | SSIM: 0.973228 | RMSE: 13.194995
+Algoritm: Bicubic (a=-0.5) | Time: 2884 ms | PSNR: 25.744562 | SSIM: 0.973468 | RMSE: 13.161703
+Algoritm: Bicubic (a=-0.7) | Time: 2668 ms | PSNR: 25.730918 | SSIM: 0.973390 | RMSE: 13.182394
+Algoritm: Bicubic (a=-1.0) | Time: 2758 ms | PSNR: 25.712480 | SSIM: 0.973354 | RMSE: 13.210407
+Algoritm: Lanczos (a=2) | Time: 6139 ms | PSNR: 25.724120 | SSIM: 0.973364 | RMSE: 13.192715
+Algoritm: Lanczos (a=3) | Time: 14341 ms | PSNR: 25.656321 | SSIM: 0.971937 | RMSE: 13.296095
+Algoritm: Lanczos (a=4) | Time: 23895 ms | PSNR: 25.587858 | SSIM: 0.969932 | RMSE: 13.401311
+Algoritm: OpenCV Nearest | Time: 1 ms | PSNR: inf | SSIM: 1.000000 | RMSE: 0.000000
+Algoritm: OpenCV Bilinear | Time: 12 ms | PSNR: 27.917131 | SSIM: 0.983716 | RMSE: 10.249050
+Algoritm: OpenCV Bicubic | Time: 1 ms | PSNR: 29.881364 | SSIM: 0.989592 | RMSE: 8.174703
+Algoritm: OpenCV Lanczos | Time: 14 ms | PSNR: 30.115332 | SSIM: 0.985970 | RMSE: 7.957444
+
+=== Testing on: binaryflower | Scale: 0.5 x 0.5 ===
+Algoritm: Nearest | Time: 5 ms | PSNR: 19.132174 | SSIM: 0.888380 | RMSE: 28.179384
+Algoritm: Bilinear | Time: 27 ms | PSNR: 19.132174 | SSIM: 0.888380 | RMSE: 28.179384
+Algoritm: Bicubic (a=-0.5) | Time: 192 ms | PSNR: 19.132174 | SSIM: 0.888380 | RMSE: 28.179384
+Algoritm: Bicubic (a=-0.7) | Time: 164 ms | PSNR: 19.132174 | SSIM: 0.888380 | RMSE: 28.179384
+Algoritm: Bicubic (a=-1.0) | Time: 183 ms | PSNR: 19.132174 | SSIM: 0.888380 | RMSE: 28.179384
+Algoritm: Lanczos (a=2) | Time: 421 ms | PSNR: 19.132174 | SSIM: 0.888380 | RMSE: 28.179384
+Algoritm: Lanczos (a=3) | Time: 898 ms | PSNR: 19.132174 | SSIM: 0.888380 | RMSE: 28.179384
+Algoritm: Lanczos (a=4) | Time: 1569 ms | PSNR: 19.132174 | SSIM: 0.888380 | RMSE: 28.179384
+Algoritm: OpenCV Nearest | Time: 0 ms | PSNR: 19.132174 | SSIM: 0.888380 | RMSE: 28.179384
+Algoritm: OpenCV Bilinear | Time: 1 ms | PSNR: 20.898891 | SSIM: 0.909192 | RMSE: 22.992999
+Algoritm: OpenCV Bicubic | Time: 0 ms | PSNR: 20.938582 | SSIM: 0.910625 | RMSE: 22.888171
+Algoritm: OpenCV Lanczos | Time: 4 ms | PSNR: 20.668036 | SSIM: 0.899984 | RMSE: 23.612305
+
+=== Testing on: binaryflower | Scale: 1.5 x 0.75 ===
+Algoritm: Nearest | Time: 29 ms | PSNR: 21.494328 | SSIM: 0.939267 | RMSE: 21.469592
+Algoritm: Bilinear | Time: 110 ms | PSNR: 24.118255 | SSIM: 0.961040 | RMSE: 15.871846
+Algoritm: Bicubic (a=-0.5) | Time: 846 ms | PSNR: 24.334588 | SSIM: 0.963390 | RMSE: 15.481419
+Algoritm: Bicubic (a=-0.7) | Time: 787 ms | PSNR: 24.317825 | SSIM: 0.963240 | RMSE: 15.511327
+Algoritm: Bicubic (a=-1.0) | Time: 1027 ms | PSNR: 24.275336 | SSIM: 0.962855 | RMSE: 15.587389
+Algoritm: Lanczos (a=2) | Time: 2128 ms | PSNR: 24.313664 | SSIM: 0.963183 | RMSE: 15.518758
+Algoritm: Lanczos (a=3) | Time: 4048 ms | PSNR: 24.335432 | SSIM: 0.962120 | RMSE: 15.479916
+Algoritm: Lanczos (a=4) | Time: 7858 ms | PSNR: 24.273473 | SSIM: 0.959568 | RMSE: 15.590733
+Algoritm: OpenCV Nearest | Time: 0 ms | PSNR: 21.494328 | SSIM: 0.939267 | RMSE: 21.469592
+Algoritm: OpenCV Bilinear | Time: 4 ms | PSNR: 24.838827 | SSIM: 0.966504 | RMSE: 14.608272
+Algoritm: OpenCV Bicubic | Time: 0 ms | PSNR: 25.265752 | SSIM: 0.969991 | RMSE: 13.907613
+Algoritm: OpenCV Lanczos | Time: 5 ms | PSNR: 25.233936 | SSIM: 0.965717 | RMSE: 13.958648
+
+=== Testing on: balloons | Scale: 2 x 2 ===
+Algoritm: Nearest | Time: 40 ms | PSNR: inf | SSIM: 1.000000 | RMSE: 0.000000
+Algoritm: Bilinear | Time: 200 ms | PSNR: 33.712094 | SSIM: 0.978327 | RMSE: 5.259391
+Algoritm: Bicubic (a=-0.5) | Time: 1466 ms | PSNR: 33.689353 | SSIM: 0.978688 | RMSE: 5.273179
+Algoritm: Bicubic (a=-0.7) | Time: 1463 ms | PSNR: 33.532466 | SSIM: 0.978162 | RMSE: 5.369290
+Algoritm: Bicubic (a=-1.0) | Time: 1416 ms | PSNR: 33.283793 | SSIM: 0.977169 | RMSE: 5.525232
+Algoritm: Lanczos (a=2) | Time: 3249 ms | PSNR: 33.689200 | SSIM: 0.978681 | RMSE: 5.273272
+Algoritm: Lanczos (a=3) | Time: 7856 ms | PSNR: 33.436634 | SSIM: 0.977635 | RMSE: 5.428858
+Algoritm: Lanczos (a=4) | Time: 12536 ms | PSNR: 33.399234 | SSIM: 0.977323 | RMSE: 5.452284
+Algoritm: OpenCV Nearest | Time: 1 ms | PSNR: inf | SSIM: 1.000000 | RMSE: 0.000000
+Algoritm: OpenCV Bilinear | Time: 5 ms | PSNR: 36.900807 | SSIM: 0.988373 | RMSE: 3.643341
+Algoritm: OpenCV Bicubic | Time: 0 ms | PSNR: 44.063157 | SSIM: 0.997485 | RMSE: 1.597285
+Algoritm: OpenCV Lanczos | Time: 7 ms | PSNR: 44.984342 | SSIM: 0.998029 | RMSE: 1.436558
+
+=== Testing on: balloons | Scale: 0.5 x 0.5 ===
+Algoritm: Nearest | Time: 2 ms | PSNR: 26.894686 | SSIM: 0.895929 | RMSE: 11.529378
+Algoritm: Bilinear | Time: 9 ms | PSNR: 26.894686 | SSIM: 0.895929 | RMSE: 11.529378
+Algoritm: Bicubic (a=-0.5) | Time: 75 ms | PSNR: 26.894686 | SSIM: 0.895929 | RMSE: 11.529378
+Algoritm: Bicubic (a=-0.7) | Time: 80 ms | PSNR: 26.894686 | SSIM: 0.895929 | RMSE: 11.529378
+Algoritm: Bicubic (a=-1.0) | Time: 88 ms | PSNR: 26.894686 | SSIM: 0.895929 | RMSE: 11.529378
+Algoritm: Lanczos (a=2) | Time: 231 ms | PSNR: 26.894686 | SSIM: 0.895929 | RMSE: 11.529378
+Algoritm: Lanczos (a=3) | Time: 426 ms | PSNR: 26.894686 | SSIM: 0.895929 | RMSE: 11.529378
+Algoritm: Lanczos (a=4) | Time: 810 ms | PSNR: 26.894686 | SSIM: 0.895929 | RMSE: 11.529378
+Algoritm: OpenCV Nearest | Time: 0 ms | PSNR: 26.894686 | SSIM: 0.895929 | RMSE: 11.529378
+Algoritm: OpenCV Bilinear | Time: 1 ms | PSNR: 28.573483 | SSIM: 0.920228 | RMSE: 9.503116
+Algoritm: OpenCV Bicubic | Time: 0 ms | PSNR: 29.305270 | SSIM: 0.932978 | RMSE: 8.735277
+Algoritm: OpenCV Lanczos | Time: 3 ms | PSNR: 29.015018 | SSIM: 0.928871 | RMSE: 9.032111
+
+=== Testing on: balloons | Scale: 1.5 x 0.75 ===
+Algoritm: Nearest | Time: 14 ms | PSNR: 29.901841 | SSIM: 0.952509 | RMSE: 8.155454
+Algoritm: Bilinear | Time: 49 ms | PSNR: 32.850273 | SSIM: 0.972451 | RMSE: 5.807999
+Algoritm: Bicubic (a=-0.5) | Time: 383 ms | PSNR: 33.883722 | SSIM: 0.978444 | RMSE: 5.156489
+Algoritm: Bicubic (a=-0.7) | Time: 387 ms | PSNR: 34.098265 | SSIM: 0.979647 | RMSE: 5.030683
+Algoritm: Bicubic (a=-1.0) | Time: 383 ms | PSNR: 34.198925 | SSIM: 0.980383 | RMSE: 4.972719
+Algoritm: Lanczos (a=2) | Time: 941 ms | PSNR: 33.862007 | SSIM: 0.978378 | RMSE: 5.169396
+Algoritm: Lanczos (a=3) | Time: 2134 ms | PSNR: 34.210615 | SSIM: 0.980203 | RMSE: 4.966031
+Algoritm: Lanczos (a=4) | Time: 4468 ms | PSNR: 34.168858 | SSIM: 0.980066 | RMSE: 4.989963
+Algoritm: OpenCV Nearest | Time: 0 ms | PSNR: 29.901841 | SSIM: 0.952509 | RMSE: 8.155454
+Algoritm: OpenCV Bilinear | Time: 2 ms | PSNR: 33.965166 | SSIM: 0.976619 | RMSE: 5.108364
+Algoritm: OpenCV Bicubic | Time: 0 ms | PSNR: 36.455404 | SSIM: 0.985796 | RMSE: 3.835041
+Algoritm: OpenCV Lanczos | Time: 3 ms | PSNR: 36.667843 | SSIM: 0.986419 | RMSE: 3.742381
