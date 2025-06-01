@@ -45,21 +45,23 @@ Mat nearestNeighbor(const Mat& input, double scaleX, double scaleY) {
     Mat output(newH, newW, input.type()); // supports color
 
     //loop pe imaginea output
-    for (int y = 0; y < newH; ++y) {
-        for (int x = 0; x < newW; ++x) {
-            int srcX = std::min(static_cast<int>(x / scaleX), input.cols - 1);
-            int srcY = std::min(static_cast<int>(y / scaleY), input.rows - 1);
+    parallel_for_(Range(0, newH), [&](const Range& range) {
+           for (int y = range.start; y < range.end; ++y) {
+               for (int x = 0; x < newW; ++x) {
+                   int srcX = std::min(static_cast<int>(x / scaleX), input.cols - 1);
+                   int srcY = std::min(static_cast<int>(y / scaleY), input.rows - 1);
 
-            //static_cast<int> trunchiaza rezultatul la cel mai apropiat
-            // pixel (sus-stanga)
-            //x / scaleX asociere intre pixel original si pixel nou
-            if (input.channels() == 1) {
-                output.at<uchar>(y, x) = input.at<uchar>(srcY, srcX);
-            } else {
-                output.at<Vec3b>(y, x) = input.at<Vec3b>(srcY, srcX);
-            }
-        }
-    }
+                   //static_cast<int> trunchiaza rezultatul la cel mai apropiat
+                   // pixel (sus-stanga)
+                   //x / scaleX asociere intre pixel original si pixel nou
+                   if (input.channels() == 1) {
+                       output.at<uchar>(y, x) = input.at<uchar>(srcY, srcX);
+                   } else {
+                       output.at<Vec3b>(y, x) = input.at<Vec3b>(srcY, srcX);
+                   }
+               }
+           }
+    });
     return output;
 }
 
@@ -88,56 +90,58 @@ Mat bilinear(const Mat& input, double scaleX, double scaleY) {
     Mat output(newH, newW, input.type()); // can support color
 
     //loop pe imaginea output
-    for (int y = 0; y < newH; ++y) {
-        for (int x = 0; x < newW; ++x) {
-            // calc coordonatele din imaginea input
-            float gx = x / scaleX;
-            float gy = y / scaleY;
+    parallel_for_(Range(0, newH), [&](const Range& range) {
+        for (int y = range.start; y < range.end; ++y) {
+            for (int x = 0; x < newW; ++x) {
+                // calc coordonatele din imaginea input
+                float gx = x / scaleX;
+                float gy = y / scaleY;
 
-            // floor = cea mai mare val intreaga
-            int x0 = floor(gx);
-            int y0 = floor(gy);
-            // vecin right
-            int x1 = x0 + 1;
-            // vecin bottom
-            int y1 = y0 + 1;
-            //diferenta fractionala pt interpolare
-            float dx = gx - x0; //diferenta orizontala
-            float dy = gy - y0; //diferenta verticala
+                // floor = cea mai mare val intreaga
+                int x0 = floor(gx);
+                int y0 = floor(gy);
+                // vecin right
+                int x1 = x0 + 1;
+                // vecin bottom
+                int y1 = y0 + 1;
+                //diferenta fractionala pt interpolare
+                float dx = gx - x0; //diferenta orizontala
+                float dy = gy - y0; //diferenta verticala
 
-            //gray scale remains the same
-            if (input.channels() == 1) {
-                uchar p00 = getPixel(input, x0, y0);
-                uchar p10 = getPixel(input, x1, y0);
-                uchar p01 = getPixel(input, x0, y1);
-                uchar p11 = getPixel(input, x1, y1);
+                //gray scale remains the same
+                if (input.channels() == 1) {
+                    uchar p00 = getPixel(input, x0, y0);
+                    uchar p10 = getPixel(input, x1, y0);
+                    uchar p01 = getPixel(input, x0, y1);
+                    uchar p11 = getPixel(input, x1, y1);
 
-                float val = (1 - dx) * (1 - dy) * p00 + dx * (1 - dy) * p10 +
-                            (1 - dx) * dy * p01 + dx * dy * p11;
-                output.at<uchar>(y, x) = static_cast<uchar>(val);
-            } else {
-                // color image -> more color chanels
-                Vec3b res;
-                // for each chanel
-                for (int c = 0; c < 3; c++) {
-                    // 4 surrounding pixels
-                    uchar p00 = getColorPixel(input, x0, y0)[c]; // top-left
-                    uchar p10 = getColorPixel(input, x1, y0)[c]; // top-right
-                    uchar p01 = getColorPixel(input, x0, y1)[c]; // bottom-left
-                    uchar p11 = getColorPixel(input, x1, y1)[c]; // bottom-right
+                    float val = (1 - dx) * (1 - dy) * p00 + dx * (1 - dy) * p10 +
+                                (1 - dx) * dy * p01 + dx * dy * p11;
+                    output.at<uchar>(y, x) = static_cast<uchar>(val);
+                } else {
+                    // color image -> more color chanels
+                    Vec3b res;
+                    // for each chanel
+                    for (int c = 0; c < 3; c++) {
+                        // 4 surrounding pixels
+                        uchar p00 = getColorPixel(input, x0, y0)[c]; // top-left
+                        uchar p10 = getColorPixel(input, x1, y0)[c]; // top-right
+                        uchar p01 = getColorPixel(input, x0, y1)[c]; // bottom-left
+                        uchar p11 = getColorPixel(input, x1, y1)[c]; // bottom-right
 
-                    //interpolare pe baza distantei (formula)
-                    float value =
-                        (1 - dx) * (1 - dy) * p00 +
-                        dx * (1 - dy) * p10 +
-                        (1 - dx) * dy * p01 +
-                        dx * dy * p11;
-                    res[c] = saturate_cast<uchar>(value);
+                        //interpolare pe baza distantei (formula)
+                        float value =
+                            (1 - dx) * (1 - dy) * p00 +
+                            dx * (1 - dy) * p10 +
+                            (1 - dx) * dy * p01 +
+                            dx * dy * p11;
+                        res[c] = saturate_cast<uchar>(value);
+                    }
+                    output.at<Vec3b>(y, x) = res;
                 }
-                output.at<Vec3b>(y, x) = res;
             }
         }
-    }
+    });
     return output;
 }
 
@@ -189,53 +193,56 @@ Mat bicubicCustom(const Mat& input, double scaleX, double scaleY, float a) {
     int newH = input.rows * scaleY;
     Mat output(newH, newW, input.type()); // can support color
 
-    for (int y = 0; y < newH; ++y) {
-        for (int x = 0; x < newW; ++x) {
-            // calc coordonatele din imaginea input
-            float gx = x / scaleX;
-            float gy = y / scaleY;
-            // floor = cea mai mare val intreaga
-            int x0 = floor(gx);
-            int y0 = floor(gy);
-            //diferenta fractionala pt interpolare
-            float dx = gx - x0; //diferenta orizontala
-            float dy = gy - y0; //diferenta verticala
+    parallel_for_(Range(0, newH), [&](const Range& range) {
+        for (int y = range.start; y < range.end; ++y) {
+            for (int x = 0; x < newW; ++x) {
+                // calc coordonatele din imaginea input
+                float gx = x / scaleX;
+                float gy = y / scaleY;
+                // floor = cea mai mare val intreaga
+                int x0 = floor(gx);
+                int y0 = floor(gy);
+                //diferenta fractionala pt interpolare
+                float dx = gx - x0; //diferenta orizontala
+                float dy = gy - y0; //diferenta verticala
 
-            if (input.channels() == 1) {
-                float sum = 0, weightSum = 0;
-                for (int m = -1; m <= 2; ++m) {
-                    for (int n = -1; n <= 2; ++n) {
-                        float w = cubicKernel(dx - m, a) * cubicKernel(dy - n, a);
-                        sum += getPixel(input, x0 + m, y0 + n) * w;
-                        weightSum += w;
-                    }
-                }
-                output.at<uchar>(y, x) = saturate_cast<uchar>(sum / weightSum);
-            } else {
-                // sum is now a vector
-                Vec3f sum = Vec3f(0, 0, 0);
-                float weightSum = 0;
-                // for each color chanel
-                    // 4x4 neighbourhood
-                for (int m = -1; m <= 2; ++m) {
-                    for (int n = -1; n <= 2; ++n) {
-                        //folosim kerneul cubic parametrizat pentru x si y
-                        float w = cubicKernel(dx - m, a) * cubicKernel(dy - n, a);
-                        Vec3b px = getColorPixel(input, x0 + m, y0 + n);
-                        for (int c = 0; c < 3; ++c) {
-                            sum[c] += px[c] * w;
+                if (input.channels() == 1) {
+                    float sum = 0, weightSum = 0;
+                    for (int m = -1; m <= 2; ++m) {
+                        for (int n = -1; n <= 2; ++n) {
+                            float w = cubicKernel(dx - m, a) * cubicKernel(dy - n, a);
+                            sum += getPixel(input, x0 + m, y0 + n) * w;
+                            weightSum += w;
                         }
-                        weightSum += w; // ptr a impartii la final
                     }
-                }
-                Vec3b result;
-                for (int c = 0; c < 3; ++c) {
-                    result[c] = saturate_cast<uchar>(sum[c] / weightSum);
-                }
-                output.at<Vec3b>(y, x) = result;
+                    output.at<uchar>(y, x) = saturate_cast<uchar>(sum / weightSum);
+                } else {
+                    // sum is now a vector
+                    Vec3f sum = Vec3f(0, 0, 0);
+                    float weightSum = 0;
+                    // for each color chanel
+                        // 4x4 neighbourhood
+                    for (int m = -1; m <= 2; ++m) {
+                        for (int n = -1; n <= 2; ++n) {
+                            //folosim kerneul cubic parametrizat pentru x si y
+                            float w = cubicKernel(dx - m, a) * cubicKernel(dy - n, a);
+                            Vec3b px = getColorPixel(input, x0 + m, y0 + n);
+                            for (int c = 0; c < 3; ++c) {
+                                sum[c] += px[c] * w;
+                            }
+                            weightSum += w; // ptr a impartii la final
+                        }
+                    }
+                    Vec3b result;
+                    for (int c = 0; c < 3; ++c) {
+                        result[c] = saturate_cast<uchar>(sum[c] / weightSum);
+                    }
+                    output.at<Vec3b>(y, x) = result;
                 }
             }
         }
+    });
+
     return output;
 }
 // Lanczos kernel
@@ -280,46 +287,48 @@ Mat lanczos(const Mat& input, double scaleX, double scaleY, int a) {
     int newH = input.rows * scaleY;
     Mat output(newH, newW, input.type()); // can support color
 
-    for (int y = 0; y < newH; ++y) {
-        for (int x = 0; x < newW; ++x) {
-            // calc coordonatele din imaginea input
-            float gx = x / scaleX;
-            float gy = y / scaleY;
-            // floor = cea mai mare val intreaga
-            int x0 = floor(gx);
-            int y0 = floor(gy);
+    parallel_for_(Range(0, newH), [&](const Range& range) {
+        for (int y = range.start; y < range.end; ++y) {
+            for (int x = 0; x < newW; ++x) {
+                // calc coordonatele din imaginea input
+                float gx = x / scaleX;
+                float gy = y / scaleY;
+                // floor = cea mai mare val intreaga
+                int x0 = floor(gx);
+                int y0 = floor(gy);
 
-            if (input.channels() == 1) {
-                float sum = 0, weightSum = 0;
-                for (int m = -a + 1; m <= a; ++m) {
-                    for (int n = -a + 1; n <= a; ++n) {
-                        float dx = gx - (x0 + m);
-                        float dy = gy - (y0 + n);
-                        float w = lanczosKernel(dx, a) * lanczosKernel(dy, a);
-                        sum += getPixel(input, x0 + m, y0 + n) * w;
-                        weightSum += w;
+                if (input.channels() == 1) {
+                    float sum = 0, weightSum = 0;
+                    for (int m = -a + 1; m <= a; ++m) {
+                        for (int n = -a + 1; n <= a; ++n) {
+                            float dx = gx - (x0 + m);
+                            float dy = gy - (y0 + n);
+                            float w = lanczosKernel(dx, a) * lanczosKernel(dy, a);
+                            sum += getPixel(input, x0 + m, y0 + n) * w;
+                            weightSum += w;
+                        }
                     }
-                }
-                output.at<uchar>(y, x) = saturate_cast<uchar>(sum / weightSum);
-            } else {
-                Vec3f sum = Vec3f(0, 0, 0);
-                float weightSum = 0;
-                for (int m = -a + 1; m <= a; ++m) {
-                    for (int n = -a + 1; n <= a; ++n) {
-                        float dx = gx - (x0 + m);
-                        float dy = gy - (y0 + n);
-                        float w = lanczosKernel(dx, a) * lanczosKernel(dy, a);
-                        Vec3b px = getColorPixel(input, x0 + m, y0 + n);
-                        for (int c = 0; c < 3; ++c) sum[c] += px[c] * w;
-                        weightSum += w;
+                    output.at<uchar>(y, x) = saturate_cast<uchar>(sum / weightSum);
+                } else {
+                    Vec3f sum = Vec3f(0, 0, 0);
+                    float weightSum = 0;
+                    for (int m = -a + 1; m <= a; ++m) {
+                        for (int n = -a + 1; n <= a; ++n) {
+                            float dx = gx - (x0 + m);
+                            float dy = gy - (y0 + n);
+                            float w = lanczosKernel(dx, a) * lanczosKernel(dy, a);
+                            Vec3b px = getColorPixel(input, x0 + m, y0 + n);
+                            for (int c = 0; c < 3; ++c) sum[c] += px[c] * w;
+                            weightSum += w;
+                        }
                     }
+                    Vec3b result;
+                    for (int c = 0; c < 3; ++c)
+                        result[c] = saturate_cast<uchar>(sum[c] / weightSum);
+                    output.at<Vec3b>(y, x) = result;
                 }
-                Vec3b result;
-                for (int c = 0; c < 3; ++c)
-                    result[c] = saturate_cast<uchar>(sum[c] / weightSum);
-                output.at<Vec3b>(y, x) = result;
             }
         }
-    }
+    });
     return output;
 }
