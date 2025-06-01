@@ -1,0 +1,109 @@
+Image,Scale,Algorithm,Time (ms),PSNR,SSIM,RMSE
+shell,x2,Nearest,10,inf,1,0
+shell,x2,Bilinear,4,27.4239,0.949853,10.8479
+shell,x2,Bicubic (a=-0.5),16,27.4858,0.952599,10.7708
+shell,x2,Bicubic (a=-0.7),16,27.3922,0.952638,10.8875
+shell,x2,Bicubic (a=-1.0),16,27.2093,0.951623,11.1193
+shell,x2,Lanczos (a=2),32,27.486,0.95262,10.7706
+shell,x2,Lanczos (a=3),80,27.2669,0.951475,11.0458
+shell,x2,Lanczos (a=4),136,27.156,0.950219,11.1877
+shell,x2,OpenCV Nearest,0,inf,1,0
+shell,x2,OpenCV Bilinear,3,29.3065,0.96468,8.73405
+shell,x2,OpenCV Bicubic,5,35.1628,0.9915,4.45041
+shell,x2,OpenCV Lanczos,5,36.2109,0.993356,3.94455
+shell,x0.5,Nearest,0,20.5584,0.744505,23.9122
+shell,x0.5,Bilinear,0,20.5584,0.744505,23.9122
+shell,x0.5,Bicubic (a=-0.5),1,20.5584,0.744505,23.9122
+shell,x0.5,Bicubic (a=-0.7),1,20.5584,0.744505,23.9122
+shell,x0.5,Bicubic (a=-1.0),1,20.5584,0.744505,23.9122
+shell,x0.5,Lanczos (a=2),2,20.5584,0.744505,23.9122
+shell,x0.5,Lanczos (a=3),5,20.5584,0.744505,23.9122
+shell,x0.5,Lanczos (a=4),11,20.5584,0.744505,23.9122
+shell,x0.5,OpenCV Nearest,0,20.5584,0.744505,23.9122
+shell,x0.5,OpenCV Bilinear,0,22.1939,0.789952,19.8081
+shell,x0.5,OpenCV Bicubic,0,22.5721,0.816066,18.9642
+shell,x0.5,OpenCV Lanczos,0,22.2495,0.805354,19.6817
+shell,x1.5,Nearest,0,23.9331,0.887993,16.2138
+shell,x1.5,Bilinear,1,25.9926,0.922306,12.7912
+shell,x1.5,Bicubic (a=-0.5),5,26.7758,0.937116,11.6883
+shell,x1.5,Bicubic (a=-0.7),7,26.9277,0.940196,11.4857
+shell,x1.5,Bicubic (a=-1.0),6,27.0031,0.942292,11.3864
+shell,x1.5,Lanczos (a=2),15,26.7714,0.937076,11.6942
+shell,x1.5,Lanczos (a=3),23,27.0291,0.941772,11.3523
+shell,x1.5,Lanczos (a=4),38,27.0244,0.941677,11.3585
+shell,x1.5,OpenCV Nearest,0,23.9331,0.887993,16.2138
+shell,x1.5,OpenCV Bilinear,0,26.7528,0.932141,11.7193
+shell,x1.5,OpenCV Bicubic,0,28.5589,0.956897,9.51906
+shell,x1.5,OpenCV Lanczos,1,28.8288,0.959503,9.2278
+binaryflower,x2,Nearest,54,inf,1,0
+binaryflower,x2,Bilinear,78,25.7226,0.973228,13.195
+binaryflower,x2,Bicubic (a=-0.5),454,25.7446,0.973468,13.1617
+binaryflower,x2,Bicubic (a=-0.7),560,25.7309,0.97339,13.1824
+binaryflower,x2,Bicubic (a=-1.0),565,25.7125,0.973354,13.2104
+binaryflower,x2,Lanczos (a=2),1223,25.7241,0.973364,13.1927
+binaryflower,x2,Lanczos (a=3),2615,25.6563,0.971937,13.2961
+binaryflower,x2,Lanczos (a=4),4560,25.5879,0.969932,13.4013
+binaryflower,x2,OpenCV Nearest,2,inf,1,0
+binaryflower,x2,OpenCV Bilinear,17,27.9171,0.983716,10.249
+binaryflower,x2,OpenCV Bicubic,1,29.8814,0.989592,8.1747
+binaryflower,x2,OpenCV Lanczos,14,30.1153,0.98597,7.95744
+binaryflower,x0.5,Nearest,1,19.1322,0.88838,28.1794
+binaryflower,x0.5,Bilinear,6,19.1322,0.88838,28.1794
+binaryflower,x0.5,Bicubic (a=-0.5),33,19.1322,0.88838,28.1794
+binaryflower,x0.5,Bicubic (a=-0.7),38,19.1322,0.88838,28.1794
+binaryflower,x0.5,Bicubic (a=-1.0),73,19.1322,0.88838,28.1794
+binaryflower,x0.5,Lanczos (a=2),72,19.1322,0.88838,28.1794
+binaryflower,x0.5,Lanczos (a=3),160,19.1322,0.88838,28.1794
+binaryflower,x0.5,Lanczos (a=4),310,19.1322,0.88838,28.1794
+binaryflower,x0.5,OpenCV Nearest,0,19.1322,0.88838,28.1794
+binaryflower,x0.5,OpenCV Bilinear,1,20.8989,0.909192,22.993
+binaryflower,x0.5,OpenCV Bicubic,2,20.9386,0.910625,22.8882
+binaryflower,x0.5,OpenCV Lanczos,3,20.668,0.899984,23.6123
+binaryflower,x1.5,Nearest,6,21.4943,0.939267,21.4696
+binaryflower,x1.5,Bilinear,23,24.1183,0.96104,15.8718
+binaryflower,x1.5,Bicubic (a=-0.5),231,24.3346,0.96339,15.4814
+binaryflower,x1.5,Bicubic (a=-0.7),206,24.3178,0.96324,15.5113
+binaryflower,x1.5,Bicubic (a=-1.0),169,24.2753,0.962855,15.5874
+binaryflower,x1.5,Lanczos (a=2),428,24.3137,0.963183,15.5188
+binaryflower,x1.5,Lanczos (a=3),1017,24.3354,0.96212,15.4799
+binaryflower,x1.5,Lanczos (a=4),1732,24.2735,0.959568,15.5907
+binaryflower,x1.5,OpenCV Nearest,0,21.4943,0.939267,21.4696
+binaryflower,x1.5,OpenCV Bilinear,7,24.8388,0.966504,14.6083
+binaryflower,x1.5,OpenCV Bicubic,2,25.2658,0.969991,13.9076
+binaryflower,x1.5,OpenCV Lanczos,12,25.2339,0.965717,13.9586
+balloons,x2,Nearest,7,inf,1,0
+balloons,x2,Bilinear,27,33.7121,0.978327,5.25939
+balloons,x2,Bicubic (a=-0.5),269,33.6894,0.978688,5.27318
+balloons,x2,Bicubic (a=-0.7),271,33.5325,0.978162,5.36929
+balloons,x2,Bicubic (a=-1.0),622,33.2838,0.977169,5.52523
+balloons,x2,Lanczos (a=2),787,33.6892,0.978681,5.27327
+balloons,x2,Lanczos (a=3),2374,33.4366,0.977635,5.42886
+balloons,x2,Lanczos (a=4),2610,33.3992,0.977323,5.45228
+balloons,x2,OpenCV Nearest,1,inf,1,0
+balloons,x2,OpenCV Bilinear,14,36.9008,0.988373,3.64334
+balloons,x2,OpenCV Bicubic,1,44.0632,0.997485,1.59728
+balloons,x2,OpenCV Lanczos,7,44.9843,0.998029,1.43656
+balloons,x0.5,Nearest,0,26.8947,0.895929,11.5294
+balloons,x0.5,Bilinear,3,26.8947,0.895929,11.5294
+balloons,x0.5,Bicubic (a=-0.5),25,26.8947,0.895929,11.5294
+balloons,x0.5,Bicubic (a=-0.7),13,26.8947,0.895929,11.5294
+balloons,x0.5,Bicubic (a=-1.0),16,26.8947,0.895929,11.5294
+balloons,x0.5,Lanczos (a=2),37,26.8947,0.895929,11.5294
+balloons,x0.5,Lanczos (a=3),91,26.8947,0.895929,11.5294
+balloons,x0.5,Lanczos (a=4),225,26.8947,0.895929,11.5294
+balloons,x0.5,OpenCV Nearest,0,26.8947,0.895929,11.5294
+balloons,x0.5,OpenCV Bilinear,1,28.5735,0.920228,9.50312
+balloons,x0.5,OpenCV Bicubic,0,29.3053,0.932978,8.73528
+balloons,x0.5,OpenCV Lanczos,6,29.015,0.928871,9.03211
+balloons,x1.5,Nearest,4,29.9018,0.952509,8.15545
+balloons,x1.5,Bilinear,14,32.8503,0.972451,5.808
+balloons,x1.5,Bicubic (a=-0.5),101,33.8837,0.978444,5.15649
+balloons,x1.5,Bicubic (a=-0.7),77,34.0983,0.979647,5.03068
+balloons,x1.5,Bicubic (a=-1.0),79,34.1989,0.980383,4.97272
+balloons,x1.5,Lanczos (a=2),246,33.862,0.978378,5.1694
+balloons,x1.5,Lanczos (a=3),537,34.2106,0.980203,4.96603
+balloons,x1.5,Lanczos (a=4),802,34.1689,0.980066,4.98996
+balloons,x1.5,OpenCV Nearest,0,29.9018,0.952509,8.15545
+balloons,x1.5,OpenCV Bilinear,5,33.9652,0.976619,5.10836
+balloons,x1.5,OpenCV Bicubic,1,36.4554,0.985796,3.83504
+balloons,x1.5,OpenCV Lanczos,4,36.6678,0.986419,3.74238
