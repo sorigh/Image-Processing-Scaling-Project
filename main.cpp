@@ -126,8 +126,7 @@ void testInterpolationOnImage(const Mat& original, const string& imageName, doub
     csvFile.close();
 }
 
-
-int main(int argc, char** argv) {
+void testMain() {
     // list of image files
     vector<string> imageNames = {"shell.png", "binaryflower.png", "balloons.bmp"};
 
@@ -158,5 +157,35 @@ int main(int argc, char** argv) {
     }
 
     cout << "\nResults saved in /output/doc/.\n";
+}
+
+int main(int argc, char** argv) {
+    //testMain();
+    Mat input = imread("../images/Flowers_24bits.bmp");
+    if (input.empty()) {
+        std::cerr << "Failed to load image.\n";
+        return -1;
+    }
+
+    double scaleX = 1.5;
+    double scaleY = 1.5;
+
+    Mat nn = nearestNeighbor(input, scaleX, scaleY);
+    Mat bl = bilinear(input, scaleX, scaleY);
+    Mat bc = bicubicCustom(input, scaleX, scaleY, -0.5f);
+    Mat lz = lanczos(input, scaleX, scaleY, 3);
+
+    imshow("Original", input);
+    imshow("Nearest Neighbor", nn);
+    imshow("Bilinear", bl);
+    imshow("Bicubic (a=-0.5)", bc);
+    imshow("Lanczos (a=3)", lz);
+
+    imwrite("../colorTestOutput/output_nearest.jpg", nn);
+    imwrite("../colorTestOutput/output_bilinear.jpg", bl);
+    imwrite("../colorTestOutput/output_bicubic.jpg", bc);
+    imwrite("../colorTestOutput/output_lanczos.jpg", lz);
+
+    waitKey(0);
     return 0;
 }
